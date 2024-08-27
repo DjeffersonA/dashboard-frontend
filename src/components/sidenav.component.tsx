@@ -2,10 +2,15 @@ import { ReactNode, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  CalendarCheck2,
-  Gauge,
   AlignJustify,
+  LayoutDashboard,
+  Settings,
+  Home,
+  ChartNoAxesCombined,
+  BadgeDollarSign,
+  PhoneCall,
 } from "lucide-react";
+import { ModeToggle } from "./modetoggle";
 
 
 interface SidenavProps {
@@ -81,7 +86,7 @@ function SidenavItems({
           </div>
         </Link>
       ) : (
-        <>cu</>
+        <>Não há informação</>
       )}
     </>
   );
@@ -90,15 +95,33 @@ function SidenavItems({
 const links: SidenavLinkProps[] = [
   {
     href: "/",
-    title: "Dashboard",
+    title: "Início",
     slug: "/",
-    icon: <Gauge className="h-5 w-5" />,
+    icon: <Home className="h-5 w-5" />,
+  },
+  {
+    href: "/financeiro",
+    title: "Financeiro",
+    slug: "/financeiro",
+    icon: <BadgeDollarSign className="h-5 w-5" />,
+  },
+  {
+    href: "/marketing",
+    title: "Marketing",
+    slug: "/marketing",
+    icon: <ChartNoAxesCombined className="h-5 w-5" />,
+  },
+  {
+    href: "/comercial",
+    title: "Comercial",
+    slug: "/comercial",
+    icon: <PhoneCall className="h-5 w-5" />,
   },
   {
     href: "/configuracoes",
-    title: "Configuracoes",
+    title: "Configurações",
     slug: "/configuracoes",
-    icon: <CalendarCheck2 className="h-5 w-5" />,
+    icon: <Settings className="h-5 w-5" />,
   },
 ];
 
@@ -133,7 +156,7 @@ export default function Sidenav({ children, page }: SidenavProps) {
           <nav className="flex flex-col w-full">
             <div className="pt-6 px-5 pb-4">
               <div className="flex justify-center items-center">
-                <AlignJustify className="w-10 h-10" />
+                <AlignJustify className="w-5 h-5" />
               </div>
 
               <div className="w-full flex justify-center mt-6">
@@ -152,6 +175,7 @@ export default function Sidenav({ children, page }: SidenavProps) {
                 </div>
               ))}
             </div>
+            <div className="justify-center relative py-2 pr-5 pl-10 w-full ease-in-out duration-300"><ModeToggle/></div>
           </nav>
         </div>
         <main className={`grid flex-1 items-start xl:px-28 mb-20 sm:mb-0`}>
