@@ -28,11 +28,11 @@ export function DatePickerWithRange({
 
   const handleApply = () => {
     onDateChange(localDateRange);
-    setIsOpen(false); // Fecha o Popover ao aplicar a data
+    setIsOpen(false);
   };
 
   const handleClear = () => {
-    setLocalDateRange(undefined); // Limpa a seleção de datas
+    setLocalDateRange(undefined);
   };
 
   return (

@@ -153,29 +153,33 @@ export default function Sidenav({ children, page }: SidenavProps) {
           className={`inset-y-0 left-0 z-10 hidden xl:flex flex-col border-r bg-sidenav-blur2 noScrollBar`}
           style={{ position: "fixed", width: "96px" }}
         >
-          <nav className="flex flex-col w-full">
-            <div className="pt-6 px-5 pb-4">
-              <div className="flex justify-center items-center">
-                <AlignJustify className="w-5 h-5" />
-              </div>
-
-              <div className="w-full flex justify-center mt-6">
-                <Image
-                  src={"/logo_fgi.png"}
-                  alt="Logo"
-                  width={96}
-                  height={96}
-                />
-              </div>
-            </div>
+          <nav className="flex flex-col w-full h-full justify-between">
             <div>
-              {links.map((link) => (
-                <div key={link.title}>
-                  <SidenavItems {...link} selected={page} />
+              <div className="pt-6 px-5 pb-4">
+                <div className="flex justify-center items-center">
+                  <AlignJustify className="w-5 h-5" />
                 </div>
-              ))}
+
+                <div className="w-full flex justify-center mt-6">
+                  <Image
+                    src={"/logo_fgi.png"}
+                    alt="Logo"
+                    width={96}
+                    height={96}
+                  />
+                </div>
+              </div>
+              <div>
+                {links.map((link) => (
+                  <div key={link.title}>
+                    <SidenavItems {...link} selected={page} />
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="justify-center relative py-2 pr-5 pl-10 w-full ease-in-out duration-300"><ModeToggle/></div>
+            <div className="flex justify-center mt-auto mb-5">
+              <ModeToggle />
+            </div>
           </nav>
         </div>
         <main className={`grid flex-1 items-start xl:px-28 mb-20 sm:mb-0`}>

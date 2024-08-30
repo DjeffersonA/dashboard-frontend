@@ -35,7 +35,7 @@ interface FinanceiroProps {
   contas: Conta[];
 }
 
-const Financeiro: React.FC<FinanceiroProps> = ({ contas }) => {
+const Cards: React.FC<FinanceiroProps> = ({ contas }) => {
   const [progress, setProgress] = useState({
     mensalidadeProgress: 0,
     pagosProgress: 0,
@@ -123,5 +123,5 @@ const Financeiro: React.FC<FinanceiroProps> = ({ contas }) => {
   );
 };
 
-export default Financeiro;
+export default Cards;
 
