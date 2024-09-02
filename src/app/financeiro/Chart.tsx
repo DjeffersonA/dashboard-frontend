@@ -41,7 +41,7 @@ interface GProps {
   contas: Conta[];
 }
 
-const GraficoBarra: React.FC<GProps> = ({ contas }) => {
+const PrevistaXRealizadaCurso: React.FC<GProps> = ({ contas }) => {
   const [chartData, setChartData] = useState<any[]>([]);
   const [sortOption, setSortOption] = useState<string>("previsto");
 
@@ -78,7 +78,6 @@ const GraficoBarra: React.FC<GProps> = ({ contas }) => {
         };
       });
 
-      // Ordena conforme a opção selecionada
       const sortedChartData = chartDataFormatted.sort((a, b) => {
         if (sortOption === "alfabetica") {
           return a.curso.localeCompare(b.curso);
@@ -110,12 +109,13 @@ const GraficoBarra: React.FC<GProps> = ({ contas }) => {
   } satisfies ChartConfig;
 
   return (
+    <div className="mb-32 grid gap-2 text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:text-left">
     <Card className="w-full h-full">
       <CardHeader className="relative flex justify-between items-left">
         <CardTitle><div className="flex gap-2 leading-none">Prevista X Realizada - Curso<TrendingUp className="h-4 w-4" /></div></CardTitle>
-        <CardDescription>Agosto/2024</CardDescription>        
-        {/* Dropdown para ordenação */}
-        <div className="absolute right-10 top-5">
+        {/* <CardDescription></CardDescription> */}
+        <div className="absolute right-7 top-3 flex items-center space-x-2">
+          <span className="text-sm">Ordenar por:</span>
           <Select onValueChange={setSortOption} defaultValue="previsto">
             <SelectTrigger className="w-[200px]">
               <SelectValue placeholder="Ordenar por" />
@@ -164,7 +164,8 @@ const GraficoBarra: React.FC<GProps> = ({ contas }) => {
         </ChartContainer>
       </CardContent>
     </Card>
+    </div>
   );
 };
 
-export default GraficoBarra;
+export default PrevistaXRealizadaCurso;

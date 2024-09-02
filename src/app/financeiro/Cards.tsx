@@ -20,9 +20,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ label, value }) => {
     <Card>
       <CardHeader>
         <CardTitle>{label}</CardTitle>
-        <CardDescription>
+        {/* <CardDescription>
         Agosto/2024
-        </CardDescription>
+        </CardDescription> */ }
       </CardHeader>
       <CardContent>
         R$ {value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}

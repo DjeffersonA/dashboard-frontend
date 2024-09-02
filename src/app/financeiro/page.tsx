@@ -6,7 +6,7 @@ import { API } from "../api/api"
 import { useState, useEffect } from "react";
 import { DateRange } from "react-day-picker"
 import { startOfMonth, endOfMonth } from "date-fns";
-import GraficoBarra from "./Chart";
+import PrevistaXRealizadaCurso from "./Chart";
 
 export default function Dashboard() {
   const [selectedDateRange, setSelectedDateRange] = useState<DateRange | undefined>({
@@ -35,7 +35,7 @@ export default function Dashboard() {
           onDateChange={setAppliedDateRange} 
         />
         <Cards contas={data} />
-        <GraficoBarra contas={data} />
+        <PrevistaXRealizadaCurso contas={data} />
       </div>
     </AppContext>
   );
