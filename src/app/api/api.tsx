@@ -1,11 +1,10 @@
 export const API = async (dataInicio: Date, dataFim: Date): Promise<any[]> => {
   try {
-    // Extrair o número do mês de dataInicio e dataFim
-    const parcelaInicio = dataInicio.getMonth(); // getMonth() retorna 0 para Janeiro, então somamos 1
+    const parcelaInicio = dataInicio.getMonth();
     const parcelaFim = dataFim.getMonth() + 2;
 
-    // Montar a URL com os parâmetros de data e parcela
-    let url = `${process.env.NEXT_PUBLIC_API_URL}&data_inicio=${dataInicio.toISOString().split('T')[0]}&data_fim=${dataFim.toISOString().split('T')[0]}&parcela_inicio=${parcelaInicio}&parcela_fim=${parcelaFim}`;
+    let url = `${process.env.NEXT_PUBLIC_API_URL}?data_fim=${dataFim.toISOString().split('T')[0]}&data_inicio=${dataInicio.toISOString().split('T')[0]}&format=json&parcela_fim=${parcelaFim}&parcela_inicio=${parcelaInicio}`;
+  
     let allResults: any[] = [];
 
     do {

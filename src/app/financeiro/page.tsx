@@ -5,16 +5,19 @@ import { DatePickerWithRange } from "@/components/ui/date-picker-with-range";
 import { API } from "../api/api"
 import { useState, useEffect } from "react";
 import { DateRange } from "react-day-picker"
-import { startOfMonth, endOfMonth } from "date-fns";
-import PrevistaXRealizadaCurso from "./Chart";
+import { startOfMonth, endOfMonth, subMonths } from "date-fns";
+import PrevistaXRealizadaCurso from "./PrevistaXRealizadaCurso";
+import PrevistaXRealizadaPeriodo from "./PrevistaXRealizadaPeriodos";
+import InadimplenciaPeriodo from "./InadimplenciaPeriodo";
 
 export default function Dashboard() {
-  const [selectedDateRange, setSelectedDateRange] = useState<DateRange | undefined>({
+  const [selectedDateRange] = useState<DateRange | undefined>({
     from: startOfMonth(new Date()),
     to: endOfMonth(new Date()),
   });
   const [appliedDateRange, setAppliedDateRange] = useState<DateRange | undefined>(selectedDateRange);
   const [data, setData] = useState<any[]>([]);
+  const [dataLastMonth, setDataLastMonth] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +25,12 @@ export default function Dashboard() {
       if (from && to) {
         const result = await API(from, to);
         setData(result);
+
+        // Subtraindo um mês do intervalo de datas e buscando dados do mês anterior
+        const lastMonthFrom = subMonths(from, 1);
+        const lastMonthTo = subMonths(to, 1);
+        const resultLastMonth = await API(lastMonthFrom, lastMonthTo);
+        setDataLastMonth(resultLastMonth);
       }
     };
     fetchData();
@@ -34,8 +43,11 @@ export default function Dashboard() {
           selectedDateRange={selectedDateRange} 
           onDateChange={setAppliedDateRange} 
         />
-        <Cards contas={data} />
+        <Cards contas={data} dataLastMonth={dataLastMonth} />
+        <PrevistaXRealizadaPeriodo contas={data} />
         <PrevistaXRealizadaCurso contas={data} />
+        <InadimplenciaPeriodo contas={data} />
+        {/* Exemplo de uso do dataLastMonth */}
       </div>
     </AppContext>
   );

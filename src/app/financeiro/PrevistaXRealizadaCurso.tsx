@@ -26,7 +26,7 @@ const percentLabel = (props: any) => {
 };
 
 const valueLabel = (props: any) => {
-  return `R$ ${props.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  return `R$${props.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 };
 
 interface Conta {

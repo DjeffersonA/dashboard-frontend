@@ -1,5 +1,4 @@
 import AppContext from "@/context/app.context";
-import Image from "next/image";
 
 export default function Home() {
   return (
