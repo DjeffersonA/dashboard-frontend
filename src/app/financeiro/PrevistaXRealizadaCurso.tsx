@@ -112,7 +112,7 @@ const PrevistaXRealizadaCurso: React.FC<GProps> = ({ contas }) => {
     <div className="mb-32 grid gap-2 text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:text-left">
     <Card className="w-full h-full">
       <CardHeader className="relative flex justify-between items-left">
-        <CardTitle><div className="flex gap-2 leading-none">Prevista X Realizada - Curso<TrendingUp className="h-4 w-4" /></div></CardTitle>
+        <CardTitle><div className="flex gap-2 leading-none">Prevista x Realizada - Curso<TrendingUp className="h-4 w-4" /></div></CardTitle>
         {/* <CardDescription></CardDescription> */}
         <div className="absolute right-7 top-3 flex items-center space-x-2">
           <span className="text-sm">Ordenar por:</span>

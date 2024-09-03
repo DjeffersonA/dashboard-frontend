@@ -26,7 +26,6 @@ export default function Dashboard() {
         const result = await API(from, to);
         setData(result);
 
-        // Subtraindo um mês do intervalo de datas e buscando dados do mês anterior
         const lastMonthFrom = subMonths(from, 1);
         const lastMonthTo = subMonths(to, 1);
         const resultLastMonth = await API(lastMonthFrom, lastMonthTo);
@@ -47,7 +46,6 @@ export default function Dashboard() {
         <PrevistaXRealizadaPeriodo contas={data} />
         <PrevistaXRealizadaCurso contas={data} />
         <InadimplenciaPeriodo contas={data} />
-        {/* Exemplo de uso do dataLastMonth */}
       </div>
     </AppContext>
   );

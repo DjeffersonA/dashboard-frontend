@@ -162,10 +162,18 @@ export default function Sidenav({ children, page }: SidenavProps) {
 
                 <div className="w-full flex justify-center mt-6">
                   <Image
-                    src={"/logo_fgi.png"}
-                    alt="Logo"
+                    src="/FGI_LIGHT.png"
+                    alt="Logo Light"
                     width={96}
                     height={96}
+                    className="block dark:hidden"
+                  />
+                  <Image
+                    src="/FGI_DARK.png"
+                    alt="Logo Dark"
+                    width={96}
+                    height={96}
+                    className="hidden dark:block"
                   />
                 </div>
               </div>
