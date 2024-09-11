@@ -2,7 +2,7 @@
 import AppContext from "@/context/app.context";
 import Cards from './Cards'
 import { DatePickerWithRange } from "@/components/ui/date-picker-with-range";
-import { API } from "../api/api"
+import { API, API2 } from "../api/api"
 import { useState, useEffect } from "react";
 import { DateRange } from "react-day-picker"
 import { startOfMonth, endOfMonth, subMonths } from "date-fns";
@@ -28,7 +28,7 @@ export default function Dashboard() {
 
         const lastMonthFrom = subMonths(from, 1);
         const lastMonthTo = subMonths(to, 1);
-        const resultLastMonth = await API(lastMonthFrom, lastMonthTo);
+        const resultLastMonth = await API2(lastMonthFrom, lastMonthTo);
         setDataLastMonth(resultLastMonth);
       }
     };
