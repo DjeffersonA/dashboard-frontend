@@ -19,16 +19,22 @@ interface ProgressBarProps {
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ label, value, valueLast, type }) => {
-  const percentageChange = value ? ((value - valueLast) / valueLast) * 100 : 0;
+  const [percentageChange, setPercentageChange] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (valueLast !== null) {
+      const calculatedChange = valueLast ? ((value - valueLast) / valueLast) * 100 : 0;
+      setTimeout(() => {
+        setPercentageChange(calculatedChange);
+      }, 0);
+    }
+  }, [value, valueLast]);
   const isIncrease = value > valueLast;
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>{label}</CardTitle>
-        {/* <CardDescription>
-          Agosto/2024
-        </CardDescription> */}
       </CardHeader>
       <CardContent>
         R$ {value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -39,28 +45,32 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ label, value, valueLast, type
           isIncrease ? (
             <span className="text-green-500 flex items-center gap-1">
               <CircleArrowUpIcon className="h-4 w-4" color="green" />
-              {"+"}
-              {Math.abs(percentageChange).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%
+              {percentageChange !== null 
+                ? `+${Math.abs(percentageChange).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`
+                : 'Carregando...'}
             </span>
           ) : (
             <span className="text-red-500 flex items-center gap-1">
               <CircleArrowDownIcon className="h-4 w-4" color="red" />
-              {"-"}
-              {Math.abs(percentageChange).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%
+              {percentageChange !== null 
+                ? `-${Math.abs(percentageChange).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`
+                : 'Carregando...'}
             </span>
           )
         ) : (
           isIncrease ? (
             <span className="text-red-500 flex items-center gap-1">
               <CircleArrowUpIcon className="h-4 w-4" color="red" />
-              {"+"}
-              {Math.abs(percentageChange).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%
+              {percentageChange !== null 
+                ? `+${Math.abs(percentageChange).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`
+                : 'Carregando...'}
             </span>
           ) : (
             <span className="text-green-500 flex items-center gap-1">
               <CircleArrowDownIcon className="h-4 w-4" color="green" />
-              {"-"}
-              {Math.abs(percentageChange).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%
+              {percentageChange !== null 
+                ? `-${Math.abs(percentageChange).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`
+                : 'Carregando...'}
             </span>
           )
         )}

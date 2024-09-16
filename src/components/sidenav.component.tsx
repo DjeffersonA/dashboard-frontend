@@ -7,9 +7,13 @@ import {
   Settings,
   Home,
   ChartNoAxesCombined,
-  BadgeDollarSign,
+  DollarSign,
+  CreditCard,
   PhoneCall,
+  Wallet,
+  Landmark,
 } from "lucide-react";
+import PaidIcon from '@mui/icons-material/Paid';
 import { ModeToggle } from "./modetoggle";
 
 
@@ -103,7 +107,13 @@ const links: SidenavLinkProps[] = [
     href: "/financeiro",
     title: "Financeiro",
     slug: "/financeiro",
-    icon: <BadgeDollarSign className="h-5 w-5" />,
+    icon: <Landmark className="h-5 w-5" />,
+  },
+  {
+    href: "/contasapagar",
+    title: "Contas A Pagar",
+    slug: "/contasapagar",
+    icon: <PaidIcon className="h-5 w-5" />,
   },
   {
     href: "/marketing",
