@@ -42,26 +42,28 @@ const InadimplenciaPeriodo: React.FC<GProps> = ({ contas }) => {
           if (!intervalo) return acc;
 
           if (!acc[intervalo]) {
-            acc[intervalo] = { previsto: 0, inadimplencia: 0 };
+            acc[intervalo] = { pago: 0, inadimplencia: 0 };
           }
 
-          acc[intervalo].previsto += parseFloat(item.valor_mensalidade || '0');
+          if (item.data_pagamento !== null) {
+            acc[intervalo].pago += parseFloat(item.valor_pago || '0');
+          }
 
           if (formatToday > item.data_vencimento && item.valor_pago == null && item.data_pagamento == null) {
             acc[intervalo].inadimplencia += parseFloat(item.valor_mensalidade || '0') 
           }
 
           return acc;
-        }, {} as Record<string, { previsto: number, inadimplencia: number }>);
+        }, {} as Record<string, { pago: number, inadimplencia: number }>);
 
         const chartDataFormatted = intervalos.map((intervalo) => {
-          const previsto = Math.ceil((periodoMap[intervalo]?.previsto || 0) * 100) / 100;
+          const pago = Math.ceil((periodoMap[intervalo]?.pago || 0) * 100) / 100;
           const inadimplencia = Math.ceil((periodoMap[intervalo]?.inadimplencia || 0) * 100) / 100;;
-          const percent = previsto > 0 ? ((inadimplencia / previsto) * 100).toFixed(2) : '0.00';
+          const percent = pago > 0 ? ((inadimplencia / pago) * 100).toFixed(2) : '0.00';
 
           return {
             intervalo,
-            previsto,
+            pago,
             inadimplencia,
             percent: parseFloat(percent),
           };
@@ -75,9 +77,9 @@ const InadimplenciaPeriodo: React.FC<GProps> = ({ contas }) => {
   }, [contas]);
 
   const chartConfig = {
-    previsto: {
-      label: "Receita Prevista",
-      color: "hsl(var(--chart-1))",
+    pago: {
+      label: "Valor Pago",
+      color: "hsl(var(--chart-2))",
     },
     inadimplencia: {
       label: "Inadimplência",
@@ -122,8 +124,8 @@ const InadimplenciaPeriodo: React.FC<GProps> = ({ contas }) => {
             <Bar dataKey="percent" fill={chartConfig.percent.color} radius={0} barSize={15}>
               <LabelList dataKey="percent" position="right" offset={8} fill={chartConfig.percent.color} fontSize={11} formatter={percentLabel} />
             </Bar>
-            <Bar dataKey="previsto" fill={chartConfig.previsto.color} radius={0} barSize={15}>
-              <LabelList dataKey="previsto" position="right" offset={8} className="fill-foreground" fontSize={11} formatter={valueLabel} />
+            <Bar dataKey="pago" fill={chartConfig.pago.color} radius={0} barSize={15}>
+              <LabelList dataKey="pago" position="right" offset={8} className="fill-foreground" fontSize={11} formatter={valueLabel} />
             </Bar>
             <Bar dataKey="inadimplencia" fill={chartConfig.inadimplencia.color} radius={0} barSize={15}>
               <LabelList dataKey="inadimplencia" position="right" offset={8} className="fill-foreground" fontSize={11} formatter={valueLabel} />

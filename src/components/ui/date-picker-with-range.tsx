@@ -22,6 +22,10 @@ export function DatePickerWithRange({
   const [localDateRange, setLocalDateRange] = React.useState<DateRange | undefined>(selectedDateRange);
   const [isOpen, setIsOpen] = React.useState(false);
 
+  React.useEffect(() => {
+    setLocalDateRange(selectedDateRange);
+  }, [selectedDateRange]);
+  
   const handleDateChange = (newDateRange: DateRange | undefined) => {
     setLocalDateRange(newDateRange);
   };
