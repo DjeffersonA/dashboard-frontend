@@ -74,13 +74,13 @@ const FullStackedChart: React.FC<ChartProps> = ({ data }) => {
               fill="var(--color-pagantes)"
               radius={[0, 0, 0, 0]}
               barSize={15}
-            ><LabelList dataKey="pagantes" position="center" offset={5} className="fill-foreground" fontSize={9} formatter={percentLabel} angle={-90}/></Bar>
+            ><LabelList dataKey="pagantes" position="center" offset={5} className="fill-white" fontSize={9} formatter={percentLabel} angle={-90}/></Bar>
             <Bar
               dataKey="aPagar"
               stackId="a"
               fill="var(--color-aPagar)"
               radius={[0, 0, 0, 0]}
-            ><LabelList dataKey="aPagar" position="center" offset={5} className="fill-foreground" fontSize={9} formatter={percentLabel} angle={-90} /></Bar>
+            ><LabelList dataKey="aPagar" position="center" offset={5} className="fill-white" fontSize={9} formatter={percentLabel} angle={-90} /></Bar>
           </BarChart>
         </ChartContainer>
       </CardContent>

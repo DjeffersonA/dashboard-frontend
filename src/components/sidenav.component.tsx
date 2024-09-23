@@ -14,6 +14,7 @@ import {
   Landmark,
 } from "lucide-react";
 import PaidIcon from '@mui/icons-material/Paid';
+import Groups2Icon from '@mui/icons-material/Groups2';
 import { ModeToggle } from "./modetoggle";
 
 
@@ -125,7 +126,7 @@ const links: SidenavLinkProps[] = [
     href: "/comercial",
     title: "Comercial",
     slug: "/comercial",
-    icon: <PhoneCall className="h-5 w-5" />,
+    icon: <Groups2Icon className="h-5 w-5" />,
   },
   {
     href: "/configuracoes",

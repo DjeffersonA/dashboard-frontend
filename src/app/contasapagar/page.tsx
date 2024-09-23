@@ -49,7 +49,7 @@ export default function ContasAPagar() {
             selectedDateRange={appliedDateRange} 
             onDateChange={setAppliedDateRange} 
           />
-          <Button onClick={resetDateRange} className="px-4 py-2 rounded">
+          <Button onClick={resetDateRange} className="px-4 h-[34px] rounded">
             Redefinir
           </Button>
         </div>
