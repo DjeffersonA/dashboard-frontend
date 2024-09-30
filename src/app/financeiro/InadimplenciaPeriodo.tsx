@@ -96,7 +96,6 @@ const InadimplenciaPeriodo: React.FC<GProps> = ({ contas }) => {
     <Card className="w-full h-full">
       <CardHeader className="relative flex justify-between items-left">
         <CardTitle><div className="flex gap-2 leading-none">Inadimplência Acumulada<TrendingUp className="h-4 w-4" /></div></CardTitle>
-        {/* <CardDescription></CardDescription> */}
       </CardHeader>
 
       <CardContent>

@@ -19,7 +19,6 @@ const percentLabel = (props: any) => {
   return `${props}%`;
 };
 
-// Função para converter as strings de porcentagem para números
 const processData = (data: DataItem[]) => {
   return data.map(item => ({
     Dia: item.Dia,
@@ -28,7 +27,6 @@ const processData = (data: DataItem[]) => {
   }));
 };
 
-// Componente que recebe `data` como prop
 const FullStackedChart: React.FC<ChartProps> = ({ data }) => {
   const chartData = processData(data);
 
@@ -48,7 +46,6 @@ const FullStackedChart: React.FC<ChartProps> = ({ data }) => {
     <Card className="w-full h-full">
       <CardHeader className="relative flex justify-between items-left">
         <CardTitle>Pago x Pendente (%)</CardTitle>
-        {/* <CardDescription></CardDescription> */}
       </CardHeader>
       <CardContent>
         <ChartContainer className="w-full h-[180px]" config={chartConfig}>
