@@ -1,9 +1,10 @@
+import { ModeToggle } from "@/components/modetoggle";
 import AppContext from "@/context/app.context";
 
 export default function Configuracoes() {
   return (
     <>
-      <AppContext>Aqui é a configuracoes</AppContext>
+      <AppContext><ModeToggle/></AppContext>
     </>
   );
 }

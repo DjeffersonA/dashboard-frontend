@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { getProviders, signIn, signOut, useSession } from 'next-auth/react';
-import { ClientSafeProvider } from 'next-auth/react';
+import { getProviders, signIn, useSession, ClientSafeProvider } from 'next-auth/react';
 import AppContext from '@/context/app.context';
 import { Button } from "@/components/ui/button";
 import Image from "next/image";

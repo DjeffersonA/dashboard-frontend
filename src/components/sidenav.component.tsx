@@ -3,20 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   AlignJustify,
-  LayoutDashboard,
   Settings,
   Home,
   ChartNoAxesCombined,
-  DollarSign,
-  CreditCard,
-  PhoneCall,
-  Wallet,
   Landmark,
   LogOut,
 } from "lucide-react";
 import PaidIcon from '@mui/icons-material/Paid';
 import Groups2Icon from '@mui/icons-material/Groups2';
-import { ModeToggle } from "./modetoggle";
 import { signOut, useSession } from "next-auth/react";
 
 
@@ -88,6 +82,7 @@ function SidenavItems({
             className={`${(isHover || isLocked) && "mr-4"} ${
               slug === selectedPage && "text-primary"
             } fill-foreground/60 text-foreground/60`}
+            title={title}
           >
             {icon}
           </div>
@@ -108,13 +103,13 @@ const links: SidenavLinkProps[] = [
   },
   {
     href: "/financeiro",
-    title: "Financeiro",
+    title: "Contas a Receber",
     slug: "/financeiro",
     icon: <Landmark className="h-5 w-5" />,
   },
   {
     href: "/contasapagar",
-    title: "Contas A Pagar",
+    title: "Contas a Pagar",
     slug: "/contasapagar",
     icon: <PaidIcon className="h-5 w-5" />,
   },
@@ -200,7 +195,6 @@ export default function Sidenav({ children, page }: SidenavProps) {
               </div>
             </div>
             <div className="flex flex-col justify-center items-center mt-auto mb-5 space-y-2">
-              {/* <ModeToggle /> */}
               {session && session.user && session.user.name && (
               <>
                 <p className="text-sm text-center text-sky-600">

@@ -10,7 +10,7 @@ const handler = NextAuth ({
   ],
   callbacks: {
     async signIn({ account, profile }) {
-      if (profile?.email && profile.email.endsWith("@faculdadefgi.online")) {
+      if (profile?.email && profile.email.endsWith(`@${process.env.DOMAIN}`)) {
         return true; // Allow
       } else {
         return false; // Deny
@@ -19,6 +19,7 @@ const handler = NextAuth ({
   },
   pages: {
     signIn: '/',
+    error: '/auth/error',
   },
 });
 
