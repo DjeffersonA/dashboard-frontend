@@ -28,7 +28,7 @@ export default function ContasAPagar() {
     const fetchData = async () => {
       const { from, to } = appliedDateRange || {};
       if (from && to) {
-        const result = await APIContasAPagar();
+        const result = await APIContasAPagar(from, to);
         const data = result.filter(item => {
           const itemDate = new Date(item.Data.split('/').reverse().join('-'));
           return itemDate >= new Date(subDays(from, 1)) && itemDate <= new Date(to);

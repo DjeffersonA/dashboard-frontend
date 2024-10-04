@@ -70,9 +70,9 @@ export const API2 = async (dataInicio: Date, dataFim: Date): Promise<any[]> => {
   }
 };
 
-export const APIContasAPagar = async (): Promise<any[]> => {
+export const APIContasAPagar = async (dataInicio: Date, dataFim: Date): Promise<any[]> => {
   try {
-    let url = `${process.env.NEXT_PUBLIC_API_URL}/ContasAPagar/?&format=json`;
+    let url = `${process.env.NEXT_PUBLIC_API_URL}/ContasAPagar/?data_fim=${dataFim.toLocaleDateString('pt-BR').replace(/\//g, '-')}&data_inicio=${dataInicio.toLocaleDateString('pt-BR').replace(/\//g, '-')}&format=json`;
 
     const response = await fetch(url, {
       method: 'GET',
