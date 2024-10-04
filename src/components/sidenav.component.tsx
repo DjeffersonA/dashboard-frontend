@@ -195,24 +195,7 @@ export default function Sidenav({ children, page }: SidenavProps) {
               </div>
             </div>
             <div className="flex flex-col justify-center items-center mt-auto mb-5 space-y-2">
-              {session && session.user && session.user.name && (
-              <>
-                <p className="text-sm text-center text-sky-600">
-                  {(() => {
-                    const nameParts = session.user.name.split(" ");
-                    return `${nameParts[0]} ${nameParts[nameParts.length - 1]}`;
-                  })()}
-                </p>
-                {session.user.image && (
-                  <img
-                    src={session.user.image}
-                    alt={`${session.user.name}'s profile picture`}
-                    className="w-8 h-8 rounded-full"
-                  />
-                )}
-                <button><LogOut onClick={() => signOut()} className="h-5 w-5" color="red"/></button>
-              </>
-              )}
+              <button><LogOut onClick={() => signOut()} className="h-5 w-5" color="red"/></button>
             </div>
           </nav>
         </div>

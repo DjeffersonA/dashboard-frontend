@@ -51,10 +51,26 @@ export default function AppContext({ children }: { children: ReactNode }): JSX.E
   }
 
   return (
-    <div className="container bg-muted/40">
-        <div className="dot"></div>
-        <div className="dot"></div>
-        <div className="dot"></div>
+    <div className="bg-muted/40 relative">
+        <Image
+          src="/FGI_LIGHT_FULL.png"
+          alt="Logo Light"
+          width={258}
+          height={68}
+          className="absolute top-1/4 left-1/2 transform -translate-x-1/2 block dark:hidden"
+        />
+        <Image
+          src="/FGI_DARK_FULL.png"
+          alt="Logo Dark"
+          width={258}
+          height={68}
+          className="absolute top-1/4 left-1/2 transform -translate-x-1/2 hidden dark:block"
+        />
+        <div className="container relative pt-16">
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+        </div>
     </div>
   );
 }

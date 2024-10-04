@@ -23,7 +23,7 @@ export default function Home() {
 
   if (status === "loading") {
     return (
-      <div className="bg-gray-300 dark:bg-muted/40 relative">
+      <div className="bg-muted/40 relative">
         <Image
           src="/FGI_LIGHT_FULL.png"
           alt="Logo Light"
@@ -47,17 +47,33 @@ export default function Home() {
     );
   }
 
-  if (session && session.user) {
+  if (session && session.user && session.user.name) {
     return (
       <AppContext>
-        Home
+        <div className="flex items-center">
+          <img
+            src={session.user.image || '/default-profile.png'}
+            alt={`${session.user.name}'s profile`}
+            className="w-12 h-12 rounded-full mr-4"
+          />
+          <div className="flex flex-col">
+            <h1 className="text-lg font-semibold">
+              Bem-vindo, {(() => {
+                const nameParts = session.user.name.split(" ");
+                return `${nameParts[0]}`;
+              })()}!
+            </h1>
+            <p className="text-sm">Desenvolvedor de Software Jr.</p>
+            <p className="text-sm">{session.user.email}</p>
+          </div>
+        </div>
       </AppContext>
     );
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-gray-300 dark:bg-muted/40">
-      <div className="w-full max-w-md p-8 space-y-6 rounded-lg shadow-md bg-muted/80 dark:bg-muted/100">
+    <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-muted/40">
+      <div className="w-full max-w-md p-8 space-y-6 rounded-lg shadow-md bg-stone-100 dark:bg-muted/100">
         <div className="w-full flex justify-center mt-6">
           <Image
             src="/FGI_LIGHT_FULL.png"
