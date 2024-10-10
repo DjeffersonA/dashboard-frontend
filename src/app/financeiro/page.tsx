@@ -28,7 +28,8 @@ export default function Dashboard() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { from, to } = appliedDateRange || {};
+      var { from, to } = appliedDateRange || {};
+      if (!to) to = from;
       if (from && to) {
         const result = await API(from, to);
         setData(result);
