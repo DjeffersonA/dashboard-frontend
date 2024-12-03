@@ -40,7 +40,7 @@ export const API2 = async (dataInicio: Date, dataFim: Date): Promise<any[]> => {
     const parcelaInicio = dataInicio.getMonth();
     const parcelaFim = dataFim.getMonth() + 2;
 
-    let url = `${process.env.NEXT_PUBLIC_API_URL}/ContasAReceber/?import=0&data_fim=${dataFim.toISOString().split('T')[0]}&data_inicio=${dataInicio.toISOString().split('T')[0]}&format=json&parcela_fim=12&parcela_inicio=1`;
+    let url = `${process.env.NEXT_PUBLIC_API_URL}/ContasAReceber/?import=1&data_fim=${dataFim.toISOString().split('T')[0]}&data_inicio=${dataInicio.toISOString().split('T')[0]}&format=json&parcela_fim=12&parcela_inicio=1`;
   
     let allResults: any[] = [];
 

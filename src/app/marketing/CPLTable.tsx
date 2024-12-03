@@ -61,16 +61,16 @@ export const columns: ColumnDef<{ courseID: string; totalSpend: number; trafficS
     cell: ({ row }) => <div>{row.getValue("courseID")}</div>,
   },
   {
-    accessorKey: "totalSpend",
-    header: () => <div className="text-right">Gasto Total</div>,
+    accessorKey: "formMetaSpend",
+    header: () => <div className="text-right">Gasto Form Meta</div>,
     cell: ({ row }) => {
-      const amount = row.getValue("totalSpend") as number;
+      const amount = row.getValue("formMetaSpend") as number;
 
       const formatted = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL",
       }).format(amount);
-
+      
       return <div className="text-right font-medium">{formatted}</div>;
     },
   },
@@ -89,10 +89,10 @@ export const columns: ColumnDef<{ courseID: string; totalSpend: number; trafficS
     },
   },
   {
-    accessorKey: "formMetaSpend",
-    header: () => <div className="text-right">Gasto Form Meta</div>,
+    accessorKey: "totalSpend",
+    header: () => <div className="text-right">Gasto Total</div>,
     cell: ({ row }) => {
-      const amount = row.getValue("formMetaSpend") as number;
+      const amount = row.getValue("totalSpend") as number;
 
       const formatted = new Intl.NumberFormat("pt-BR", {
         style: "currency",

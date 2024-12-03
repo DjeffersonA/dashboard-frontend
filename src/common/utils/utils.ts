@@ -131,6 +131,6 @@ export function getCourseName(courseID: string): string {
 export function isPaidTraffic(campaignName: string, adsetName: string): boolean {
   const normalize = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-  // Verifica se "trafego" está presente em qualquer uma das strings normalizadas
+  // Verifica se "trafego" existe em alguma das strings
   return normalize(campaignName).includes("trafego") || normalize(adsetName).includes("trafego");
 }

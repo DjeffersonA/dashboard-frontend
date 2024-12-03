@@ -5,10 +5,12 @@ import { APIContasAPagar } from "../api/api";
 import { DatePickerWithRange } from "@/components/ui/date-picker-with-range";
 import { Button } from "@/components/ui/button"; 
 import { DateRange } from "react-day-picker";
-import { startOfMonth, endOfMonth, subDays } from "date-fns";
+import { startOfMonth, endOfMonth, subDays, subMonths } from "date-fns";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import Cards from "./Cards";
 import FullStackedChart from "./FullStackedChart";
 import StackedChart from "./StackedChart";
+import { History } from "lucide-react";
 
 export default function ContasAPagar() {
   const [selectedDateRange] = useState<DateRange | undefined>({
@@ -23,6 +25,12 @@ export default function ContasAPagar() {
     setAppliedDateRange(selectedDateRange);
     setKey(prevKey => prevKey + 1);
   };
+
+  const applyLastMonthFilter = () => {
+    const lastMonthStart = startOfMonth(subMonths(new Date(), 1));
+    const lastMonthEnd = endOfMonth(subMonths(new Date(), 1));
+    setAppliedDateRange({ from: lastMonthStart, to: lastMonthEnd });
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,6 +53,14 @@ export default function ContasAPagar() {
     <AppContext>
       <div className="flex gap-1 min-h-screen flex-col items-center p-4">
         <div className="flex items-center gap-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button className="px-3 h-[34px] rounded"><History size={18} /></Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem onClick={applyLastMonthFilter}>Mês Passado</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <DatePickerWithRange 
             selectedDateRange={appliedDateRange} 
             onDateChange={setAppliedDateRange} 
